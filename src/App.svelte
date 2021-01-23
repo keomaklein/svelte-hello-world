@@ -1,33 +1,35 @@
 <script>
-	import Title from './Title.svelte';
-	import Body from './Body.svelte';
-	
+	import Header from "./Header.svelte";
+	import Footer from "./Footer.svelte";
+	import Contador from "./Contador.svelte";
+	import Lista from "./Lista.svelte";
 	export let name;
-	let counter = 0;
 
-	function clicou() {
-		counter += 1;
-	}
-
-	$: if (counter > 3) {
-		alert("Chegou em 3, reiniciando contagem");
-		counter = 0;
-	}
+	import { Col, Row } from "sveltestrap";
 </script>
 
 <main>
-	<Title/>	
-	<h1>Hello {name}!</h1>
-	<h2>Contador simples: {counter}</h2>
-	<button on:click={clicou}>Incremento</button>
-	<Body/>
+	<Header />	
+	<div class="row">
+		<div class="col-12" style="margin:4em">
+			<h1>Hello {name}!</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 col-xl-6 col-md-6 col-lg-6">
+			<Contador />
+		</div>
+		<div class="col-12 col-xl-6 col-md-6 col-lg-6">
+			<Lista />
+		</div>
+	</div>
+	<Footer />
 </main>
 
 <style>
 	main {
 		text-align: center;
-		padding: 1em;
-		max-width: 240px;
+		padding: 0;
 		margin: 0 auto;
 	}
 
@@ -38,9 +40,4 @@
 		font-weight: 100;
 	}
 
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
 </style>
